@@ -1,4 +1,5 @@
 const Hapi = require('hapi');
+const routes = require('./routes/index');
 
 const server = Hapi.server({
   host: 'localhost',
@@ -6,13 +7,7 @@ const server = Hapi.server({
 });
 
 // Add the route
-server.route({
-  method: 'GET',
-  path: '/hello',
-  handler: (request, h) => {
-    return 'hello world';
-  },
-});
+server.route(routes);
 
 // Start the server
 const start = async () => {

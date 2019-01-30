@@ -1,4 +1,4 @@
-const { server, start } = require('./../../src/server');
+const { server, start } = require('./../../../src/server');
 
 describe('server () :', () => {
   const options = {
@@ -15,7 +15,7 @@ describe('server () :', () => {
   });
   const options1 = {
     method: 'GET',
-    url: '/hello',
+    url: '/ping',
   };
   it('should return status code "200" for route /hello', async () => {
     const temp = await server.inject(options1);
@@ -23,11 +23,11 @@ describe('server () :', () => {
   });
   it('should return message "hello world" on route /hello', async () => {
     const temp = await server.inject(options1);
-    expect(temp.payload).toEqual('hello world');
+    expect(temp.payload).toEqual('pong');
   });
   const options2 = {
     method: 'POST',
-    url: '/hello',
+    url: '/ping',
   };
   it('should return status code "404" for any route of POST method', async () => {
     const temp = await server.inject(options2);
